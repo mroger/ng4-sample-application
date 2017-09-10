@@ -1,0 +1,13 @@
+<div class="board-column">
+  <span>Items({{ cardItems.length }})</span>
+  <md-list class="board-list">
+    <div *ngFor="let cardItem of cardItems">
+      <md-card class="board-card" (click)="onSelectCard(cardItem)">{{ cardItem.name }}</md-card>
+    </div>
+    <span class="add-button-circle" *ngIf="selectedCardOneId">
+      <button md-fab (click)="addToSecondColumn()">
+        <md-icon>add circle</md-icon>
+      </button>
+    </span>
+  </md-list>
+</div>

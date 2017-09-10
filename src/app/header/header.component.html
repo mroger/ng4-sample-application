@@ -1,0 +1,27 @@
+<div>
+  <md-toolbar color="primary">
+    <div>
+        <button md-icon-button [md-menu-trigger-for]="menu">
+          <md-icon>menu</md-icon>
+        </button>
+      <span>Custom Projects</span>
+    </div>
+
+    <div>
+      <md-select placeholder="Ano" floatPlaceholder="never" [(ngModel)]="year" (change)="onSelectYear()">
+        <md-option *ngFor="let year of years" [value]="year">
+          {{ year }}
+        </md-option>
+      </md-select>
+      <md-select placeholder="Gestor" floatPlaceholder="never" [(ngModel)]="manager" (change)="onSelectManager()">
+        <md-option *ngFor="let manager of managers" [value]="manager.id">
+          {{ manager.name }}
+        </md-option>
+      </md-select>      
+    </div>
+  </md-toolbar>
+  <md-menu x-position="before" #menu="mdMenu">
+    <button md-menu-item>Option 1</button>
+    <button md-menu-item>Option 2</button>
+  </md-menu>
+</div>

@@ -1,0 +1,12 @@
+C - OK
+R - OK
+U - Missing
+D - Missing
+
+Refactoring of names
+Refactoring of notification
+Refactoring of services
+Remove duplicated code
+Refactoring of layout
+Use data from backend instead of in-memory database
+Notification of changes from 4th column to third, second and first

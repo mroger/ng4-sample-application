@@ -1,0 +1,33 @@
+<h3 md-dialog-title>
+  Criar item segunda coluna
+</h3>
+<md-dialog-content>
+  <div>
+    <span><strong>{{ selectedCardOne.name }}</strong></span>
+  </div>
+  <br />
+  <div>
+    <md-form-field>
+      <input mdInput [(ngModel)]="inputName" placeholder="Nome">
+    </md-form-field>
+  </div>
+  <div>
+    <md-form-field>
+      <input mdInput [(ngModel)]="inputGoal" placeholder="Meta" (keydown)="addGoal($event)">
+    </md-form-field>
+  </div>
+  <div>
+    <md-chip-list>
+      <md-chip
+        *ngFor="let goal of goals"
+        color="primary" removable="true" (remove)="removeGoal(goal)">
+          {{ goal }} <md-icon mdChipRemove>cancel</md-icon>
+      </md-chip>
+    </md-chip-list>    
+  </div>
+</md-dialog-content>
+<hr />
+<md-dialog-actions>
+  <button md-raised-button color="primary" (click)="criarItem()">Criar</button>
+  <button [md-dialog-close]="false" md-raised-button>Cancelar</button>
+</md-dialog-actions>

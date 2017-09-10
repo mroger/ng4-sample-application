@@ -1,0 +1,9 @@
+.board-list {
+  margin-right: 10px;
+}
+
+.add-button-circle {
+  position: absolute;
+  right: 25px;
+  bottom: 35px;
+}

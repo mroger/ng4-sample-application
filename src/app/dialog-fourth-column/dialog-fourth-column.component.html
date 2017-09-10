@@ -1,0 +1,63 @@
+<h3 md-dialog-title>
+  Criar item quarta coluna
+</h3>
+<md-dialog-content>
+  <div>
+    <span><strong>{{ selectedCardOne.name }}</strong></span>
+  </div>
+  <div>
+    <span><strong>{{ selectedCardTwo.name }}</strong></span>
+  </div>
+  <div>
+    <span><strong>{{ selectedCardThree.name }}</strong></span>
+  </div>
+  <br />
+  <div>
+    <md-form-field>
+      <textarea mdInput [(ngModel)]="inputDescription" placeholder="Descrição"></textarea>
+    </md-form-field>
+  </div>
+  <div>
+    <md-form-field>
+      <input mdInput [(ngModel)]="inputManager" placeholder="Gestor" [mdAutocomplete]="autocomplete"
+        (keyup)="applyManagerFilter($event)" [value]="inputManagerName">
+    </md-form-field>
+  </div>
+  <md-autocomplete #autocomplete="mdAutocomplete" [displayWith]="displayFn">
+    <md-option *ngFor="let manager of filteredOptions | async" [value]="manager" >
+       {{ manager.name }}
+    </md-option>
+  </md-autocomplete>
+  <div>
+    <md-form-field>
+      <input mdInput [mdDatepicker]="picker1" placeholder="Data início" [(ngModel)]="inputStartDate">
+      <md-datepicker-toggle mdSuffix [for]="picker1"></md-datepicker-toggle>
+      <md-datepicker #picker1></md-datepicker>
+    </md-form-field>
+    <md-form-field>
+      <input mdInput [mdDatepicker]="picker2" placeholder="Data fim" [(ngModel)]="inputEndDate">
+      <md-datepicker-toggle mdSuffix [for]="picker2"></md-datepicker-toggle>
+      <md-datepicker #picker2></md-datepicker>
+    </md-form-field>
+  </div>
+  <div>
+    <md-form-field>
+      <input mdInput [(ngModel)]="inputWeight" placeholder="Peso">
+    </md-form-field>
+    <md-form-field>
+      <input mdInput [(ngModel)]="inputEvolution" placeholder="Evolução">
+    </md-form-field>
+  </div>
+  <div>
+    <md-select placeholder="Status" [(ngModel)]="inputStatus">
+      <md-option *ngFor="let status of statuses" [value]="status.id">
+        {{ status.name }}
+      </md-option>
+    </md-select>
+  </div>
+</md-dialog-content>
+<hr />
+<md-dialog-actions>
+  <button md-raised-button color="primary" (click)="criarItem()">Criar</button>
+  <button [md-dialog-close]="false" md-raised-button>Cancelar</button>
+</md-dialog-actions>
