@@ -8,5 +8,6 @@ Refactoring of notification
 Refactoring of services
 Remove duplicated code
 Refactoring of layout
+Missing unit tests
 Use data from backend instead of in-memory database
 Notification of changes from 4th column to third, second and first
