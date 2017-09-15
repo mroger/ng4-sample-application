@@ -3,6 +3,7 @@ R - OK
 U - Missing
 D - Missing
 
+Move access to service from dialog to list
 Refactoring of names
 Refactoring of notification
 Refactoring of services
@@ -11,3 +12,4 @@ Refactoring of layout
 Missing unit tests
 Use data from backend instead of in-memory database
 Notification of changes from 4th column to third, second and first
+Move folders to feature, shared and core folders (In progress)
