@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 
-import { Three } from "../model/three";
-import { ListThreeService } from "../services/list-three.service";
-import { CardTwoToCardThreeNotificationService } from "../services/notification/card-two-to-card-three-notification.service";
-import { CardThreeToCardFourNotificationService } from "../services/notification/card-three-to-card-four-notification.service";
 import { DialogThirdColumnComponent } from "../dialog-third-column/dialog-third-column.component";
-import { ToFourthColumn } from "../model/notification/to-fourth-column";
+import { Three } from "../../../model/three";
+import { ListThreeService } from "../../../services/list-three.service";
+import { CardTwoToCardThreeNotificationService } from "../../../services/notification/card-two-to-card-three-notification.service";
+import { CardThreeToCardFourNotificationService } from "../../../services/notification/card-three-to-card-four-notification.service";
+import { ToFourthColumn } from "../../../model/notification/to-fourth-column";
 
 @Component({
   selector: 'app-list-three',

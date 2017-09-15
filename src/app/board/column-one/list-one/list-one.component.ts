@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 
 import { DialogFirstColumnComponent } from "../dialog-first-column/dialog-first-column.component";
-import { ListOneService } from "../services/list-one.service";
-import { One } from "../model/one";
-import { CardOneToCardTwoNotificationService } from "../services/notification/card-one-to-card-two-notification.service";
-import { ToSecondColumn } from "../model/notification/to-second-column";
+import { One } from "../../../model/one";
+import { ListOneService } from "../../../services/list-one.service";
+import { CardOneToCardTwoNotificationService } from "../../../services/notification/card-one-to-card-two-notification.service";
+import { ToSecondColumn } from "../../../model/notification/to-second-column";
 
 @Component({
   selector: 'app-list-one',

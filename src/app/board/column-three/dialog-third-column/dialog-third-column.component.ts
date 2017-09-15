@@ -1,15 +1,15 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 
-import { ListOneService } from "../services/list-one.service";
-import { ListTwoService } from "../services/list-two.service";
-import { One } from "../model/one";
-import { Two } from "../model/two";
-import { ThirdColumn } from "../model/dialog/third-column";
-import { Manager } from "../model/manager";
-import { ManagersService } from "../services/managers.service";
 import { Observable } from "rxjs/Observable";
 import { Subject } from "rxjs/Subject";
+import { One } from "../../../model/one";
+import { Two } from "../../../model/two";
+import { Manager } from "../../../model/manager";
+import { ListOneService } from "../../../services/list-one.service";
+import { ListTwoService } from "../../../services/list-two.service";
+import { ManagersService } from "../../../services/managers.service";
+import { ThirdColumn } from "../../../model/dialog/third-column";
 
 @Component({
   selector: 'app-dialog-third-column',

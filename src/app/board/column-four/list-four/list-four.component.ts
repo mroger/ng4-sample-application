@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 
-import { Four } from "../model/four";
-import { ListFourService } from "../services/list-four.service";
-import { CardThreeToCardFourNotificationService } from "../services/notification/card-three-to-card-four-notification.service";
 import { DialogFourthColumnComponent } from "../dialog-fourth-column/dialog-fourth-column.component";
-import { FourthColumn } from "../model/dialog/fourth-column";
+import { Four } from "../../../model/four";
+import { ListFourService } from "../../../services/list-four.service";
+import { CardThreeToCardFourNotificationService } from "../../../services/notification/card-three-to-card-four-notification.service";
 
 @Component({
   selector: 'app-list-four',

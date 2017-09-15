@@ -1,18 +1,18 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 
-import { One } from "../model/one";
-import { Two } from "../model/two";
-import { Three } from "../model/three";
-import { ListOneService } from "../services/list-one.service";
-import { ListTwoService } from "../services/list-two.service";
-import { ListThreeService } from "../services/list-three.service";
-import { Manager } from "../model/manager";
 import { Observable } from "rxjs/Observable";
 import { Subject } from "rxjs/Subject";
-import { ManagersService } from "../services/managers.service";
-import { FourthColumn } from "../model/dialog/fourth-column";
-import { Status } from "../model/status";
+import { One } from "../../../model/one";
+import { Two } from "../../../model/two";
+import { Three } from "../../../model/three";
+import { Manager } from "../../../model/manager";
+import { Status } from "../../../model/status";
+import { ListOneService } from "../../../services/list-one.service";
+import { ListTwoService } from "../../../services/list-two.service";
+import { ListThreeService } from "../../../services/list-three.service";
+import { ManagersService } from "../../../services/managers.service";
+import { FourthColumn } from "../../../model/dialog/fourth-column";
 
 @Component({
   selector: 'app-dialog-fourth-column',
