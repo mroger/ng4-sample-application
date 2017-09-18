@@ -5,12 +5,14 @@ import { FormsModule } from '@angular/forms';
 
 import { DialogFirstColumnComponent } from "./dialog-first-column/dialog-first-column.component";
 import { ListOneComponent } from "./list-one/list-one.component";
+import { ColumnOneRoutingModule } from "./column-one-routing.module";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    ColumnOneRoutingModule
   ],
   exports: [
     ListOneComponent
