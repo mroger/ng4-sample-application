@@ -17,13 +17,11 @@ import { AppRoutingModule } from "./app-routing.module";
 import "hammerjs";
 import { BoardModule } from "./workspace/board/board.module";
 import { HeaderModule } from "./workspace/header/header.module";
-import { WorkspaceComponent } from './workspace/workspace.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent,
-    WorkspaceComponent
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
