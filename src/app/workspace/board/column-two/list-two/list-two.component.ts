@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
-import { Router, ActivatedRoute, ParamMap, UrlSegment, UrlTree, UrlSegmentGroup } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap, Params, UrlSegment, UrlTree, UrlSegmentGroup } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 
 import { DialogSecondColumnComponent } from "../dialog-second-column/dialog-second-column.component";
@@ -15,36 +15,23 @@ import { ListTwoService } from "../../../../services/list-two.service";
 export class ListTwoComponent implements OnInit {
 
   selectedCardOneId: number;
-  cardItems: Array<Two>;
+  cardItems: Array<Two> = [];
+  showList: boolean;
 
   constructor(
     private dialog: MdDialog,
     private route: ActivatedRoute,
     private router: Router,
     private listTwoService: ListTwoService) {
-      this.cardItems = [];
-      this.route.queryParams.subscribe( params => console.log(params) );
-
-      console.log('route.url column two --->');
-      route.url.forEach((u: UrlSegment[]) => {
-        console.log(u);
-      });
-      
-      console.log('Router parse URL --->');
-      let parsedUrl = this.router.parseUrl(this.router.url);
-      console.log(parsedUrl);
-      console.log('this.router.url --->');
-      console.log(this.router.url);
-
-      this.route.paramMap
-        .switchMap((params: ParamMap) => {
-          console.log(params);
-          console.log('List-two: Selected card notified: ', params.get('columnOneSelectedCardId'));
-          this.selectedCardOneId = +params.get('columnOneSelectedCardId')
-          return params.get('columnOneSelectedCardId');
+      this.route.params
+        .switchMap((params: Params) => {
+          this.cardItems = [];
+          this.selectedCardOneId = +params['columnOneSelectedCardId'];
+          this.showList = !isNaN(this.selectedCardOneId);
+          return this.showList ? this.listTwoService.getCardItems(this.selectedCardOneId) : [];
         })
-        .subscribe((cardId: string) => {
-          this.cardItems = this.listTwoService.getCardItems(+cardId);
+        .subscribe((cardItem: Two) => {
+          if (cardItem) this.cardItems.push(cardItem);
         });
     }
 
@@ -63,7 +50,8 @@ export class ListTwoComponent implements OnInit {
     console.log('Card clicado! ', cardItem);
     this.router.navigate(['/board', {outlets: {
       'column-two': [this.selectedCardOneId],
-      'column-three': [cardItem.id]
+      'column-three': [cardItem.id],
+      'column-four': ['none']
     }}]);
   }
 

@@ -75,7 +75,7 @@ export class ListThreeComponent implements OnInit {
     this.router.navigate(['/board', {outlets: {
       'column-two': [1],
       'column-three': [this.selectedCardTwoId],
-      'column-four': [cardItem.id]
+      'column-four': ['none']
     }}]);
   }
 

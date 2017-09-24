@@ -14,3 +14,4 @@ Use data from backend instead of in-memory database
 Notification of changes from 4th column to third, second and first
 Move folders to feature, shared and core folders (In progress)
 Separate routing into modules (e.g. workspace including board)
+Refactor selected card names
