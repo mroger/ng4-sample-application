@@ -1,4 +1,4 @@
-<div class="board-column">
+<div class="board-column" *ngIf="showList">
   <span>Items({{ cardItems.length }})</span>
   <md-list class="board-list">
     <div *ngFor="let cardItem of cardItems">

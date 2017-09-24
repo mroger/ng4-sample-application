@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
-import { Router, ActivatedRoute, ParamMap, UrlSegment, UrlTree, UrlSegmentGroup } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap, Params, UrlSegment, UrlTree, UrlSegmentGroup } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 
 import { DialogThirdColumnComponent } from "../dialog-third-column/dialog-third-column.component";
@@ -16,47 +16,24 @@ export class ListThreeComponent implements OnInit {
 
   selectedCardOneId: number;
   selectedCardTwoId: number;
-  cardItems: Array<Three>;
+  cardItems: Array<Three> = [];
+  showList: boolean;
 
   constructor(
     public dialog: MdDialog,
     private route: ActivatedRoute,
     private router: Router,
     private listThreeService: ListThreeService) {
-      this.cardItems = [];
-      route.params.subscribe( params => console.log(params) );
-      route.data.subscribe( params => console.log(params) );
-      
-      // console.log('route.url --->');
-      // route.url.forEach((u: UrlSegment[]) => {
-      //   console.log(u);
-      // });
-      
-      // console.log('----->', this.route.snapshot.params);
-      // console.log('----->', this.route.snapshot.data);
-      // console.log('----->', this.route.snapshot.fragment);
-      // console.log('----->', this.route.snapshot.url);
-      // console.log('----->', this.route.snapshot.root.url);
-      // console.log('----->', this.route.snapshot.pathFromRoot);
-
-      // console.log('Router parse URL --->');
-      // let parsedUrl = this.router.parseUrl(this.router.url);
-      // console.log(parsedUrl);
-      // console.log('this.router.url --->');
-      // console.log(this.router.url);
-
-      route.paramMap
-      .switchMap((params: ParamMap) => {
-        // console.log(params);
-        // console.log('Selected card notified: ', params.get('columnOneSelectedCardId'));
-        // console.log('Selected card notified: ', params.get('columnTwoSelectedCardId'));
-        this.selectedCardOneId = +params.get('columnOneSelectedCardId');
-        this.selectedCardTwoId = +params.get('columnTwoSelectedCardId');
-        return params.get('columnTwoSelectedCardId');
-      })
-      .subscribe((cardId: string) => {
-        this.cardItems = this.listThreeService.getCardItems(+cardId);
-      });
+      this.route.params
+        .switchMap((params: Params) => {
+          this.cardItems = [];
+          this.selectedCardTwoId = +params['columnTwoSelectedCardId'];
+          this.showList = !isNaN(this.selectedCardTwoId);
+          return this.showList ? this.listThreeService.getCardItems(this.selectedCardTwoId) : [];
+        })
+        .subscribe((cardItem: Three) => {
+          if (cardItem) this.cardItems.push(cardItem);
+        });
     }
 
   ngOnInit() {

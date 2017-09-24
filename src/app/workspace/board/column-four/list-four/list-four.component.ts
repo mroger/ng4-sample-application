@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
-import { Router, ActivatedRoute, ParamMap, UrlSegment } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap, Params, UrlSegment } from '@angular/router';
 
 import { DialogFourthColumnComponent } from "../dialog-fourth-column/dialog-fourth-column.component";
 import { Four } from "../../../../model/four";
 import { ListFourService } from "../../../../services/list-four.service";
-import { CardThreeToCardFourNotificationService } from "../../../../services/notification/card-three-to-card-four-notification.service";
 
 @Component({
   selector: 'app-list-four',
@@ -17,26 +16,24 @@ export class ListFourComponent implements OnInit {
   selectedCardOneId: number;
   selectedCardTwoId: number;
   selectedCardThreeId: number;
-  cardItems: Array<Four>;
+  cardItems: Array<Four> = [];
+  showList: boolean;
 
   constructor(
     public dialog: MdDialog,
     private route: ActivatedRoute,
     private router: Router,
-    private listFourService: ListFourService,
-    private notificationService: CardThreeToCardFourNotificationService) {
-
-      console.log('this.router.url --->');
-      console.log(this.router.url);
-
-      this.cardItems = [];
-      notificationService.cardSelectedNotified$.subscribe(selectedCard => {
-        console.log('Selected card notified: ', selectedCard);
-        this.selectedCardOneId = selectedCard.selectedCardOneId;
-        this.selectedCardTwoId = selectedCard.selectedCardTwoId;
-        this.selectedCardThreeId = selectedCard.selectedCardThreeId;
-        this.cardItems = this.listFourService.getCardItems(selectedCard.selectedCardTwoId);
-      });
+    private listFourService: ListFourService) {
+      this.route.params
+        .switchMap((params: Params) => {
+          this.cardItems = [];
+          this.selectedCardThreeId = +params['columnThreeSelectedCardId'];
+          this.showList = !isNaN(this.selectedCardThreeId);
+          return this.showList ? this.listFourService.getCardItems(this.selectedCardThreeId) : [];
+        })
+        .subscribe((cardItem: Four) => {
+          if (cardItem) this.cardItems.push(cardItem);
+        });
   }
 
   ngOnInit() {
