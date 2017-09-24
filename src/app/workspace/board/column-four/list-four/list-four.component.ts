@@ -26,6 +26,13 @@ export class ListFourComponent implements OnInit {
     private listFourService: ListFourService) {
       this.route.params
         .switchMap((params: Params) => {
+
+          //Tudo bem usar aqui?
+          this.selectedCardOneId =  +this.router.parseUrl(this.router.url)
+            .root.children.primary.children['column-two'].segments[0].path;
+          this.selectedCardTwoId =  +this.router.parseUrl(this.router.url)
+            .root.children.primary.children['column-three'].segments[0].path;
+
           this.cardItems = [];
           this.selectedCardThreeId = +params['columnThreeSelectedCardId'];
           this.showList = !isNaN(this.selectedCardThreeId);

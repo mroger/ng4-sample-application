@@ -38,15 +38,6 @@ export class ListTwoComponent implements OnInit {
   ngOnInit() { }
 
   onSelectCard(cardItem: Two): void {
-    console.log('Router parse URL new --->');
-    const tree: UrlTree = this.router.parseUrl(this.router.url);
-    console.log(tree);
-    const g: UrlSegmentGroup = tree.root.children.primary;
-    console.log(g);
-    const s: { [key: string]: UrlSegmentGroup; } = g.children;
-    console.log(s['column-two'].segments[0]);
-    console.log(s['column-two'].segments[0].path);
-
     console.log('Card clicado! ', cardItem);
     this.router.navigate(['/board', {outlets: {
       'column-two': [this.selectedCardOneId],

@@ -26,6 +26,11 @@ export class ListThreeComponent implements OnInit {
     private listThreeService: ListThreeService) {
       this.route.params
         .switchMap((params: Params) => {
+
+          //Tudo bem usar aqui?
+          this.selectedCardOneId =  +this.router.parseUrl(this.router.url)
+            .root.children.primary.children['column-two'].segments[0].path;
+
           this.cardItems = [];
           this.selectedCardTwoId = +params['columnTwoSelectedCardId'];
           this.showList = !isNaN(this.selectedCardTwoId);
@@ -36,23 +41,23 @@ export class ListThreeComponent implements OnInit {
         });
     }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  onSelectCard(cardItem: Three): void {
     // console.log('Router parse URL new --->');
     // const tree: UrlTree = this.router.parseUrl(this.router.url);
     // console.log(tree);
     // const g: UrlSegmentGroup = tree.root.children.primary;
     // console.log(g);
     // const s: { [key: string]: UrlSegmentGroup; } = g.children;
+    // console.log(s['column-two'].segments[0]);
     // console.log(s['column-two'].segments[0].path);
-    // console.log(s['column-three'].segments[0].path);
-  }
 
-  onSelectCard(cardItem: Three): void {
     console.log('Card clicado! ', cardItem);
     this.router.navigate(['/board', {outlets: {
-      'column-two': [1],
+      'column-two': [this.selectedCardOneId],
       'column-three': [this.selectedCardTwoId],
-      'column-four': ['none']
+      'column-four': [cardItem.id]
     }}]);
   }
 
