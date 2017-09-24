@@ -15,20 +15,24 @@ import { ManagersService } from "./services/managers.service";
 import { PageNotFoundComponent } from "./page-not-found.component";
 import { AppRoutingModule } from "./app-routing.module";
 import "hammerjs";
-import { WorkspaceModule } from "./workspace/workspace.module";
+import { BoardModule } from "./workspace/board/board.module";
+import { HeaderModule } from "./workspace/header/header.module";
+import { WorkspaceComponent } from './workspace/workspace.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    WorkspaceComponent
   ],
   imports: [
     BrowserModule,
     MaterialModule,
     BrowserAnimationsModule,
     MdNativeDateModule,
-    AppRoutingModule,
-    WorkspaceModule
+    HeaderModule,
+    BoardModule,
+    AppRoutingModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pt-BR'},

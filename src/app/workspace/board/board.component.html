@@ -1,0 +1,23 @@
+<md-grid-list cols="5" rowHeight="400px">
+  <md-grid-tile>
+    <!-- <app-list-one class="board-column"></app-list-one> -->
+    <div class="board-column">
+      <router-outlet name="column-one"></router-outlet>
+    </div>
+  </md-grid-tile>
+  <md-grid-tile>
+    <div class="board-column">
+      <router-outlet name="column-two"></router-outlet>
+    </div>
+  </md-grid-tile>
+  <md-grid-tile>
+    <div class="board-column">
+      <router-outlet name="column-three"></router-outlet>
+    </div>
+  </md-grid-tile>
+  <md-grid-tile colspan="2">
+    <div class="board-column">
+      <router-outlet name="column-four"></router-outlet>
+    </div>
+  </md-grid-tile>
+</md-grid-list>

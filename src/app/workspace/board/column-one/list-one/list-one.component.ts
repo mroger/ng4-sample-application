@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
+import { Router } from '@angular/router';
 
 import { DialogFirstColumnComponent } from "../dialog-first-column/dialog-first-column.component";
-import { One } from "../../../model/one";
-import { ListOneService } from "../../../services/list-one.service";
-import { CardOneToCardTwoNotificationService } from "../../../services/notification/card-one-to-card-two-notification.service";
-import { ToSecondColumn } from "../../../model/notification/to-second-column";
+import { One } from "../../../../model/one";
+import { ListOneService } from "../../../../services/list-one.service";
 
 @Component({
   selector: 'app-list-one',
@@ -17,9 +16,9 @@ export class ListOneComponent implements OnInit {
   cardItems: Array<One>;
 
   constructor(
-    public dialog: MdDialog,
-    private listOneService: ListOneService,
-    private notificationService: CardOneToCardTwoNotificationService) { }
+    private dialog: MdDialog,
+    private router: Router,
+    private listOneService: ListOneService) { }
 
   ngOnInit() {
     this.cardItems = this.listOneService.getCardItems();
@@ -27,8 +26,11 @@ export class ListOneComponent implements OnInit {
 
   onSelectCard(cardItem: One): void {
     console.log('Card clicado! ', cardItem);
-    this.notificationService.notifyCardSelection(
-      new ToSecondColumn(cardItem.id));
+    this.router.navigate(['/board', {outlets: {
+      'column-two': [cardItem.id],
+      'column-three': ['none'],
+      'column-four': ['none'],
+    }}]);
   }
 
   addToFirstColumn(): void {

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
+import { Router, ActivatedRoute, ParamMap, UrlSegment } from '@angular/router';
 
 import { DialogFourthColumnComponent } from "../dialog-fourth-column/dialog-fourth-column.component";
-import { Four } from "../../../model/four";
-import { ListFourService } from "../../../services/list-four.service";
-import { CardThreeToCardFourNotificationService } from "../../../services/notification/card-three-to-card-four-notification.service";
+import { Four } from "../../../../model/four";
+import { ListFourService } from "../../../../services/list-four.service";
+import { CardThreeToCardFourNotificationService } from "../../../../services/notification/card-three-to-card-four-notification.service";
 
 @Component({
   selector: 'app-list-four',
@@ -20,8 +21,14 @@ export class ListFourComponent implements OnInit {
 
   constructor(
     public dialog: MdDialog,
+    private route: ActivatedRoute,
+    private router: Router,
     private listFourService: ListFourService,
     private notificationService: CardThreeToCardFourNotificationService) {
+
+      console.log('this.router.url --->');
+      console.log(this.router.url);
+
       this.cardItems = [];
       notificationService.cardSelectedNotified$.subscribe(selectedCard => {
         console.log('Selected card notified: ', selectedCard);
