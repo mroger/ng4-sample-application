@@ -9,30 +9,24 @@ import { ListFourComponent } from './column-four/list-four/list-four.component';
 
 const routes: Routes = [
   {
-    path: 'board',
-    component: BoardComponent,
-    children: [
-      {
-        path: '',
-        component: ListOneComponent,
-        outlet: 'column-one'
-      },
-      {
-        path: ':columnOneSelectedCardId',
-        component: ListTwoComponent,
-        outlet: 'column-two'
-      },
-      {
-        path: ':columnTwoSelectedCardId',
-        component: ListThreeComponent,
-        outlet: 'column-three'
-      },
-      {
-        path: ':columnThreeSelectedCardId',
-        component: ListFourComponent,
-        outlet: 'column-four'
-      }
-    ]
+    path: '',
+    component: ListOneComponent,
+    outlet: 'column-one'
+  },
+  {
+    path: ':columnOneSelectedCardId',
+    component: ListTwoComponent,
+    outlet: 'column-two'
+  },
+  {
+    path: ':columnTwoSelectedCardId',
+    component: ListThreeComponent,
+    outlet: 'column-three'
+  },
+  {
+    path: ':columnThreeSelectedCardId',
+    component: ListFourComponent,
+    outlet: 'column-four'
   }
 ];
 

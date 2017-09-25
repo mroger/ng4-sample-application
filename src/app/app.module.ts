@@ -16,7 +16,7 @@ import { PageNotFoundComponent } from './page-not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 import 'hammerjs';
 import { BoardModule } from './workspace/board/board.module';
-import { HeaderModule } from './workspace/header/header.module';
+import { WorkspaceModule } from './workspace/workspace.module';
 
 @NgModule({
   declarations: [
@@ -28,8 +28,7 @@ import { HeaderModule } from './workspace/header/header.module';
     MaterialModule,
     BrowserAnimationsModule,
     MdNativeDateModule,
-    HeaderModule,
-    BoardModule,
+    WorkspaceModule,
     AppRoutingModule
   ],
   providers: [
