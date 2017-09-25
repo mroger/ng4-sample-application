@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
 
-import { DialogFirstColumnComponent } from "../dialog-first-column/dialog-first-column.component";
-import { One } from "../../../../model/one";
-import { ListOneService } from "../../../../services/list-one.service";
+import { DialogFirstColumnComponent } from '../dialog-first-column/dialog-first-column.component';
+import { One } from '../../../../model/one';
+import { ListOneService } from '../../../../services/list-one.service';
 
 @Component({
   selector: 'app-list-one',
@@ -34,7 +34,7 @@ export class ListOneComponent implements OnInit {
   }
 
   addToFirstColumn(): void {
-    let dialogRef = this.dialog.open(DialogFirstColumnComponent, {
+    const dialogRef = this.dialog.open(DialogFirstColumnComponent, {
       width: '500px',
       data: { name: null, year: null }
     });

@@ -3,9 +3,9 @@ import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 import { Router, ActivatedRoute, ParamMap, Params, UrlSegment, UrlTree, UrlSegmentGroup } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 
-import { DialogSecondColumnComponent } from "../dialog-second-column/dialog-second-column.component";
-import { Two } from "../../../../model/two";
-import { ListTwoService } from "../../../../services/list-two.service";
+import { DialogSecondColumnComponent } from '../dialog-second-column/dialog-second-column.component';
+import { Two } from '../../../../model/two';
+import { ListTwoService } from '../../../../services/list-two.service';
 
 @Component({
   selector: 'app-list-two',
@@ -31,7 +31,9 @@ export class ListTwoComponent implements OnInit {
           return this.showList ? this.listTwoService.getCardItems(this.selectedCardOneId) : [];
         })
         .subscribe((cardItem: Two) => {
-          if (cardItem) this.cardItems.push(cardItem);
+          if (cardItem) {
+            this.cardItems.push(cardItem);
+          }
         });
     }
 
@@ -47,7 +49,7 @@ export class ListTwoComponent implements OnInit {
   }
 
   addToSecondColumn(): void {
-    let dialogRef = this.dialog.open(DialogSecondColumnComponent, {
+    const dialogRef = this.dialog.open(DialogSecondColumnComponent, {
       width: '500px',
       data: { selectedCardOneId: this.selectedCardOneId }
     });

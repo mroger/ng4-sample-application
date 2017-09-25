@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 import { Router, ActivatedRoute, ParamMap, Params, UrlSegment } from '@angular/router';
 
-import { DialogFourthColumnComponent } from "../dialog-fourth-column/dialog-fourth-column.component";
-import { Four } from "../../../../model/four";
-import { ListFourService } from "../../../../services/list-four.service";
+import { DialogFourthColumnComponent } from '../dialog-fourth-column/dialog-fourth-column.component';
+import { Four } from '../../../../model/four';
+import { ListFourService } from '../../../../services/list-four.service';
 
 @Component({
   selector: 'app-list-four',
@@ -27,7 +27,7 @@ export class ListFourComponent implements OnInit {
       this.route.params
         .switchMap((params: Params) => {
 
-          //Tudo bem usar aqui?
+          // Tudo bem usar aqui?
           this.selectedCardOneId =  +this.router.parseUrl(this.router.url)
             .root.children.primary.children['column-two'].segments[0].path;
           this.selectedCardTwoId =  +this.router.parseUrl(this.router.url)
@@ -39,7 +39,9 @@ export class ListFourComponent implements OnInit {
           return this.showList ? this.listFourService.getCardItems(this.selectedCardThreeId) : [];
         })
         .subscribe((cardItem: Four) => {
-          if (cardItem) this.cardItems.push(cardItem);
+          if (cardItem) {
+            this.cardItems.push(cardItem);
+          }
         });
   }
 
@@ -49,9 +51,9 @@ export class ListFourComponent implements OnInit {
   onSelectCard(cardItem: Four): void {
     console.log('Card clicado! ', cardItem);
   }
-  
+
   addToFourthColumn(): void {
-    let dialogRef = this.dialog.open(DialogFourthColumnComponent, {
+    const dialogRef = this.dialog.open(DialogFourthColumnComponent, {
       width: '500px',
       data: {
         selectedCardOneId: this.selectedCardOneId,
