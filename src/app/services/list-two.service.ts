@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { maxBy } from "lodash";
+import { maxBy } from 'lodash';
 
-import { Two } from "../model/two";
+import { Two } from '../workspace/board/column-two/shared/two.model';
 
 @Injectable()
 export class ListTwoService {
@@ -27,12 +27,12 @@ export class ListTwoService {
   addCardItem(cardItem: Two): Two {
     console.log('Adding second card: ', cardItem);
     cardItem.id = this.cardItems.length > 0
-      ? maxBy(this.cardItems, cardItem => cardItem.id).id + 1
+      ? maxBy(this.cardItems, cardItemPred => cardItemPred.id).id + 1
       : 1;
     this.cardItems.push(cardItem);
     return cardItem;
   }
-  
+
   getCardItem(cardItemId: number): Two {
     return this.cardItems.find(cardItem => {
       return cardItem.id === cardItemId;

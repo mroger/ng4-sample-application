@@ -1,18 +1,18 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 
-import { Observable } from "rxjs/Observable";
-import { Subject } from "rxjs/Subject";
-import { One } from "../../../../model/one";
-import { Two } from "../../../../model/two";
-import { Three } from "../../../../model/three";
-import { Manager } from "../../../../model/manager";
-import { Status } from "../../../../model/status";
-import { ListOneService } from "../../../../services/list-one.service";
-import { ListTwoService } from "../../../../services/list-two.service";
-import { ListThreeService } from "../../../../services/list-three.service";
-import { ManagersService } from "../../../../services/managers.service";
-import { FourthColumn } from "../../../../model/dialog/fourth-column";
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { Manager } from '../../../../model/manager';
+import { Status } from '../../../../model/status';
+import { ListOneService } from '../../../../services/list-one.service';
+import { ListTwoService } from '../../../../services/list-two.service';
+import { ListThreeService } from '../../../../services/list-three.service';
+import { ManagersService } from '../../../../services/managers.service';
+import { FourthColumn } from '../../../../model/dialog/fourth-column';
+import { One } from '../../column-one/shared/one.model';
+import { Two } from '../../column-two/shared/two.model';
+import { Three } from '../../column-three/shared/three.model';
 
 @Component({
   selector: 'app-dialog-fourth-column',
@@ -36,7 +36,7 @@ export class DialogFourthColumnComponent implements OnInit {
   managers: Array<Manager>;
 
   statuses: Array<Status>;
-  
+
   filteredOptions: Observable<Array<Manager>>;
   managerChangedNotifiedSource = new Subject<Array<Manager>>();
 
@@ -89,14 +89,14 @@ export class DialogFourthColumnComponent implements OnInit {
         this.inputDescription, this.inputManager.id, this.inputStartDate, this.inputEndDate, this.inputWeight,
         this.inputEvolution, this.inputStatus));
   }
-  
+
   displayFn(manager: Manager): string {
     console.log('Manager escolhido: ', manager);
     return manager ? manager.name : '';
   }
-  
+
   applyManagerFilter(event: KeyboardEvent): void {
-    let inputManagerName =
+    const inputManagerName =
       (typeof this.inputManager === 'object' ? this.inputManager.name : this.inputManager) || '';
     const filteredManagers = this.managers
       .filter(filteringManager => {

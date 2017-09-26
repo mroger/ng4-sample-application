@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { maxBy } from "lodash";
+import { maxBy } from 'lodash';
 
-import { One } from "../model/one";
+import { One } from '../workspace/board/column-one/shared/one.model';
 
 @Injectable()
 export class ListOneService {
@@ -21,7 +21,7 @@ export class ListOneService {
   }
 
   addCardItem(cardItem: One): One {
-    cardItem.id = maxBy(this.cardItems, cardItem => cardItem.id).id + 1;
+    cardItem.id = maxBy(this.cardItems, cardItemPred => cardItemPred.id).id + 1;
     this.cardItems.push(cardItem);
     return cardItem;
   }

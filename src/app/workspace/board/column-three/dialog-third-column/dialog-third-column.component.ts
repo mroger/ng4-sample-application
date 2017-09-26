@@ -1,15 +1,15 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 
-import { Observable } from "rxjs/Observable";
-import { Subject } from "rxjs/Subject";
-import { One } from "../../../../model/one";
-import { Two } from "../../../../model/two";
-import { Manager } from "../../../../model/manager";
-import { ListOneService } from "../../../../services/list-one.service";
-import { ListTwoService } from "../../../../services/list-two.service";
-import { ManagersService } from "../../../../services/managers.service";
-import { ThirdColumn } from "../../../../model/dialog/third-column";
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { Manager } from '../../../../model/manager';
+import { ListOneService } from '../../../../services/list-one.service';
+import { ListTwoService } from '../../../../services/list-two.service';
+import { ManagersService } from '../../../../services/managers.service';
+import { ThirdColumn } from '../../../../model/dialog/third-column';
+import { One } from '../../column-one/shared/one.model';
+import { Two } from '../../column-two/shared/two.model';
 
 @Component({
   selector: 'app-dialog-third-column',
@@ -20,7 +20,7 @@ export class DialogThirdColumnComponent implements OnInit {
 
   selectedCardOne: One;
   selectedCardTwo: Two;
-  
+
   inputName: string;
   inputManager: Manager;
   inputTargetDate: Date;
@@ -52,10 +52,10 @@ export class DialogThirdColumnComponent implements OnInit {
     this.managers = this.managersService.findAll();
   }
 
-  //filter(manager: Manager): Array<Manager> {
-  //  return this.managers.filter(filteringManager =>
-  //    filteringManager.name.toLowerCase().indexOf(manager.name.toLowerCase()) === 0);
-  //}
+  // filter(manager: Manager): Array<Manager> {
+  //   return this.managers.filter(filteringManager =>
+  //     filteringManager.name.toLowerCase().indexOf(manager.name.toLowerCase()) === 0);
+  // }
 
   criarItem(): void {
     console.log('Criando item');
@@ -72,7 +72,7 @@ export class DialogThirdColumnComponent implements OnInit {
   }
 
   applyManagerFilter(event: KeyboardEvent): void {
-    let inputManagerName =
+    const inputManagerName =
       (typeof this.inputManager === 'object' ? this.inputManager.name : this.inputManager) || '';
     const filteredManagers = this.managers
       .filter(filteringManager => {

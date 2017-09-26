@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { maxBy } from "lodash";
+import { maxBy } from 'lodash';
 
-import { Three } from "../model/three";
+import { Three } from '../workspace/board/column-three/shared/three.model';
 
 @Injectable()
 export class ListThreeService {
@@ -13,7 +13,7 @@ export class ListThreeService {
     targetDate: new Date(2017, 8, 9),
     selectedCardTwoId: 1
   }];
-  
+
   constructor() { }
 
   getCardItems(selectedCardTwoId: number): Array<Three> {
@@ -28,12 +28,12 @@ export class ListThreeService {
   addCardItem(cardItem: Three): Three {
     console.log('Adding third card: ', cardItem);
     cardItem.id = this.cardItems.length > 0
-      ? maxBy(this.cardItems, cardItem => cardItem.id).id + 1
+      ? maxBy(this.cardItems, cardItemPred => cardItemPred.id).id + 1
       : 1;
     this.cardItems.push(cardItem);
     return cardItem;
   }
-  
+
   getCardItem(cardItemId: number): Three {
     return this.cardItems.find(cardItem => {
       return cardItem.id === cardItemId;

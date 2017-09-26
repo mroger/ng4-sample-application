@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { maxBy } from "lodash";
+import { maxBy } from 'lodash';
 
-import { Four } from "../model/four";
+import { Four } from '../workspace/board/column-four/shared/four.model';
 
 @Injectable()
 export class ListFourService {
@@ -32,12 +32,12 @@ export class ListFourService {
   addCardItem(cardItem: Four): Four {
     console.log('Adding fourth card: ', cardItem);
     cardItem.id = this.cardItems.length > 0
-      ? maxBy(this.cardItems, cardItem => cardItem.id).id + 1
+      ? maxBy(this.cardItems, cardItemPred => cardItemPred.id).id + 1
       : 1;
     this.cardItems.push(cardItem);
     return cardItem;
   }
-  
+
   getCardItem(cardItemId: number): Four {
     return this.cardItems.find(cardItem => {
       return cardItem.id === cardItemId;

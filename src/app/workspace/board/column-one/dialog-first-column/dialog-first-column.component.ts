@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
-import { FirstColumn } from "../../../../model/dialog/first-column";
+
+import { FirstColumn } from '../../../../model/dialog/first-column';
 
 
 @Component({
