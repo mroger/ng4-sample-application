@@ -4,7 +4,7 @@ import { Router, ActivatedRoute, ParamMap, Params, UrlSegment, UrlTree, UrlSegme
 import 'rxjs/add/operator/switchMap';
 
 import { DialogThirdColumnComponent } from '../dialog-third-column/dialog-third-column.component';
-import { Three } from '../../../../model/three';
+import { Three } from './../shared/three.model';
 import { ListThreeService } from '../../../../services/list-three.service';
 
 @Component({

@@ -3,7 +3,7 @@ import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 import { Router, ActivatedRoute, ParamMap, Params, UrlSegment } from '@angular/router';
 
 import { DialogFourthColumnComponent } from '../dialog-fourth-column/dialog-fourth-column.component';
-import { Four } from '../../../../model/four';
+import { Four } from './../shared/four.model';
 import { ListFourService } from '../../../../services/list-four.service';
 
 @Component({

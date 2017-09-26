@@ -4,7 +4,7 @@ import { Router, ActivatedRoute, ParamMap, Params, UrlSegment, UrlTree, UrlSegme
 import 'rxjs/add/operator/switchMap';
 
 import { DialogSecondColumnComponent } from '../dialog-second-column/dialog-second-column.component';
-import { Two } from '../../../../model/two';
+import { Two } from './../shared/two.model';
 import { ListTwoService } from '../../../../services/list-two.service';
 
 @Component({

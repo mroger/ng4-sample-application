@@ -3,8 +3,8 @@ import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
 
 import { DialogFirstColumnComponent } from '../dialog-first-column/dialog-first-column.component';
-import { One } from '../../../../model/one';
 import { ListOneService } from '../../../../services/list-one.service';
+import { One } from './../shared/one.model';
 
 @Component({
   selector: 'app-list-one',
