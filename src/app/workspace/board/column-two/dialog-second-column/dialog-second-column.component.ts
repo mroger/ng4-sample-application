@@ -3,8 +3,8 @@ import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 
 import { remove } from 'lodash';
 import { ListOneService } from '../../../../services/list-one.service';
-import { SecondColumn } from '../../../../model/dialog/second-column';
 import { One } from '../../column-one/shared/one.model';
+import { SecondColumn } from '../shared/second-column';
 
 @Component({
   selector: 'app-dialog-second-column',
