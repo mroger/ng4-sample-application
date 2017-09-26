@@ -25,7 +25,6 @@ export class ListOneComponent implements OnInit {
   }
 
   onSelectCard(cardItem: One): void {
-    console.log('Card clicado! ', cardItem);
     this.router.navigate(['/board', {outlets: {
       'column-two': [cardItem.id],
       'column-three': ['none'],

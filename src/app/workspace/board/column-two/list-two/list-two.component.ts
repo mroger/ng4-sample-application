@@ -22,25 +22,22 @@ export class ListTwoComponent implements OnInit {
     private dialog: MdDialog,
     private route: ActivatedRoute,
     private router: Router,
-    private listTwoService: ListTwoService) {
-      this.route.params
-        .switchMap((params: Params) => {
-          this.cardItems = [];
-          this.selectedCardOneId = +params['columnOneSelectedCardId'];
-          this.showList = !isNaN(this.selectedCardOneId);
-          return this.showList ? this.listTwoService.getCardItems(this.selectedCardOneId) : [];
-        })
-        .subscribe((cardItem: Two) => {
-          if (cardItem) {
-            this.cardItems.push(cardItem);
-          }
-        });
-    }
+    private listTwoService: ListTwoService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.route.params
+      .switchMap((params: Params) => {
+        this.cardItems = [];
+        this.selectedCardOneId = +params['columnOneSelectedCardId'];
+        this.showList = !isNaN(this.selectedCardOneId);
+        return this.showList ? this.listTwoService.getCardItems(this.selectedCardOneId) : [];
+      })
+      .subscribe((cardItem: Two) => {
+        this.cardItems.push(cardItem);
+      });
+  }
 
   onSelectCard(cardItem: Two): void {
-    console.log('Card clicado! ', cardItem);
     this.router.navigate(['/board', {outlets: {
       'column-two': [this.selectedCardOneId],
       'column-three': [cardItem.id],

@@ -23,39 +23,25 @@ export class ListThreeComponent implements OnInit {
     public dialog: MdDialog,
     private route: ActivatedRoute,
     private router: Router,
-    private listThreeService: ListThreeService) {
-      this.route.params
-        .switchMap((params: Params) => {
+    private listThreeService: ListThreeService) { }
 
-          // Tudo bem usar aqui?
-          this.selectedCardOneId =  +this.router.parseUrl(this.router.url)
-            .root.children.primary.children['column-two'].segments[0].path;
+  ngOnInit() {
+    this.route.params
+      .switchMap((params: Params) => {
+        this.cardItems = [];
+        this.selectedCardTwoId = +params['columnTwoSelectedCardId'];
+        this.showList = !isNaN(this.selectedCardTwoId);
+        return this.showList ? this.listThreeService.getCardItems(this.selectedCardTwoId) : [];
+      })
+      .subscribe((cardItem: Three) => {
+        this.cardItems.push(cardItem);
 
-          this.cardItems = [];
-          this.selectedCardTwoId = +params['columnTwoSelectedCardId'];
-          this.showList = !isNaN(this.selectedCardTwoId);
-          return this.showList ? this.listThreeService.getCardItems(this.selectedCardTwoId) : [];
-        })
-        .subscribe((cardItem: Three) => {
-          if (cardItem) {
-            this.cardItems.push(cardItem);
-          }
-        });
-    }
-
-  ngOnInit() { }
+        this.selectedCardOneId =  +this.router.parseUrl(this.router.url)
+          .root.children.primary.children['column-two'].segments[0].path;
+      });
+  }
 
   onSelectCard(cardItem: Three): void {
-    // console.log('Router parse URL new --->');
-    // const tree: UrlTree = this.router.parseUrl(this.router.url);
-    // console.log(tree);
-    // const g: UrlSegmentGroup = tree.root.children.primary;
-    // console.log(g);
-    // const s: { [key: string]: UrlSegmentGroup; } = g.children;
-    // console.log(s['column-two'].segments[0]);
-    // console.log(s['column-two'].segments[0].path);
-
-    console.log('Card clicado! ', cardItem);
     this.router.navigate(['/board', {outlets: {
       'column-two': [this.selectedCardOneId],
       'column-three': [this.selectedCardTwoId],
