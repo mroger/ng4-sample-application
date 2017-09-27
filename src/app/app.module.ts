@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 import 'hammerjs';
-import { BoardModule } from './workspace/board/board.module';
 import { WorkspaceModule } from './workspace/workspace.module';
 
 @NgModule({
