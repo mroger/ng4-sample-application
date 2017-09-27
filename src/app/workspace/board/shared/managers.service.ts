@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Manager } from '../workspace/board/shared/manager';
+import { Manager } from './manager';
 
 @Injectable()
 export class ManagersService {

@@ -5,7 +5,7 @@ import 'rxjs/add/operator/switchMap';
 
 import { DialogSecondColumnComponent } from '../dialog-second-column/dialog-second-column.component';
 import { Two } from './../shared/two.model';
-import { ListTwoService } from '../../../../services/list-two.service';
+import { ListTwoService } from '../shared/list-two.service';
 
 @Component({
   selector: 'app-list-two',

@@ -3,16 +3,16 @@ import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { ListOneService } from '../../../../services/list-one.service';
-import { ListTwoService } from '../../../../services/list-two.service';
-import { ListThreeService } from '../../../../services/list-three.service';
-import { ManagersService } from '../../../../services/managers.service';
 import { One } from '../../column-one/shared/one.model';
 import { Two } from '../../column-two/shared/two.model';
 import { Three } from '../../column-three/shared/three.model';
 import { Manager } from '../../shared/manager';
 import { Status } from '../../shared/status';
 import { FourthColumn } from '../shared/fourth-column';
+import { ListOneService } from '../../column-one/shared/list-one.service';
+import { ListTwoService } from '../../column-two/shared/list-two.service';
+import { ListThreeService } from '../../column-three/shared/list-three.service';
+import { ManagersService } from '../../shared/managers.service';
 
 @Component({
   selector: 'app-dialog-fourth-column',

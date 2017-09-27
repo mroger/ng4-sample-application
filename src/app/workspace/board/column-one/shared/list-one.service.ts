@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { maxBy } from 'lodash';
 
-import { One } from '../workspace/board/column-one/shared/one.model';
+import { One } from './one.model';
 
 @Injectable()
 export class ListOneService {

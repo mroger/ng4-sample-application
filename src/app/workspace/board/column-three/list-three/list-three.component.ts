@@ -5,7 +5,7 @@ import 'rxjs/add/operator/switchMap';
 
 import { DialogThirdColumnComponent } from '../dialog-third-column/dialog-third-column.component';
 import { Three } from './../shared/three.model';
-import { ListThreeService } from '../../../../services/list-three.service';
+import { ListThreeService } from '../shared/list-three.service';
 
 @Component({
   selector: 'app-list-three',

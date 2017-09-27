@@ -1,32 +1,36 @@
 import { Injectable } from '@angular/core';
 import { maxBy } from 'lodash';
 
-import { Three } from '../workspace/board/column-three/shared/three.model';
+import { Four } from './four.model';
 
 @Injectable()
-export class ListThreeService {
+export class ListFourService {
 
-  cardItems: Array<Three> = [{
+  cardItems: Array<Four> = [{
     id: 1,
-    name: 'Card 1',
+    description: 'Card 1',
     managerId: 1,
-    targetDate: new Date(2017, 8, 9),
-    selectedCardTwoId: 1
+    startDate: new Date(2017, 8, 1),
+    endDate: new Date(2017, 8, 30),
+    weight: 10.5,
+    evolution: 15.7,
+    status: 1,
+    selectedCardThreeId: 1
   }];
 
   constructor() { }
 
-  getCardItems(selectedCardTwoId: number): Array<Three> {
+  getCardItems(selectedCardThreeId: number): Array<Four> {
     if (this.cardItems.length === 0) {
       return [];
     }
     return this.cardItems.filter(cardItem => {
-      return cardItem.selectedCardTwoId === selectedCardTwoId;
+      return cardItem.selectedCardThreeId === selectedCardThreeId;
     });
   }
 
-  addCardItem(cardItem: Three): Three {
-    console.log('Adding third card: ', cardItem);
+  addCardItem(cardItem: Four): Four {
+    console.log('Adding fourth card: ', cardItem);
     cardItem.id = this.cardItems.length > 0
       ? maxBy(this.cardItems, cardItemPred => cardItemPred.id).id + 1
       : 1;
@@ -34,7 +38,7 @@ export class ListThreeService {
     return cardItem;
   }
 
-  getCardItem(cardItemId: number): Three {
+  getCardItem(cardItemId: number): Four {
     return this.cardItems.find(cardItem => {
       return cardItem.id === cardItemId;
     });

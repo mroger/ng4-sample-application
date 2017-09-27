@@ -4,7 +4,7 @@ import { Router, ActivatedRoute, ParamMap, Params, UrlSegment } from '@angular/r
 
 import { DialogFourthColumnComponent } from '../dialog-fourth-column/dialog-fourth-column.component';
 import { Four } from './../shared/four.model';
-import { ListFourService } from '../../../../services/list-four.service';
+import { ListFourService } from '../shared/list-four.service';
 
 @Component({
   selector: 'app-list-four',

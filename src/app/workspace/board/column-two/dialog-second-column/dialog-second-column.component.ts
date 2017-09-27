@@ -2,9 +2,9 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 
 import { remove } from 'lodash';
-import { ListOneService } from '../../../../services/list-one.service';
 import { One } from '../../column-one/shared/one.model';
 import { SecondColumn } from '../shared/second-column';
+import { ListOneService } from '../../column-one/shared/list-one.service';
 
 @Component({
   selector: 'app-dialog-second-column',
