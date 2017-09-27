@@ -4,9 +4,6 @@ import { MaterialModule, MdDialogModule, MdNativeDateModule } from '@angular/mat
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { CardOneToCardTwoNotificationService } from './services/notification/card-one-to-card-two-notification.service';
-import { CardTwoToCardThreeNotificationService } from './services/notification/card-two-to-card-three-notification.service';
-import { CardThreeToCardFourNotificationService } from './services/notification/card-three-to-card-four-notification.service';
 import { PageNotFoundComponent } from './page-not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 import 'hammerjs';
@@ -37,9 +34,6 @@ import { ManagersService } from './workspace/board/shared/managers.service';
     ListTwoService,
     ListThreeService,
     ListFourService,
-    CardOneToCardTwoNotificationService,
-    CardTwoToCardThreeNotificationService,
-    CardThreeToCardFourNotificationService,
     ManagersService
   ],
   bootstrap: [AppComponent],
