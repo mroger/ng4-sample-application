@@ -9,11 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 import 'hammerjs';
 import { BoardModule } from './workspace/board/board.module';
 import { WorkspaceModule } from './workspace/workspace.module';
-import { ListOneService } from './workspace/board/column-one/shared/list-one.service';
-import { ListTwoService } from './workspace/board/column-two/shared/list-two.service';
-import { ListThreeService } from './workspace/board/column-three/shared/list-three.service';
-import { ListFourService } from './workspace/board/column-four/shared/list-four.service';
-import { ManagersService } from './workspace/board/shared/managers.service';
 
 @NgModule({
   declarations: [
@@ -30,11 +25,6 @@ import { ManagersService } from './workspace/board/shared/managers.service';
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pt-BR'},
-    ListOneService,
-    ListTwoService,
-    ListThreeService,
-    ListFourService,
-    ManagersService
   ],
   bootstrap: [AppComponent],
   entryComponents: []

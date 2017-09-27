@@ -10,6 +10,7 @@ import { ColumnThreeModule } from './column-three/column-three.module';
 import { ColumnFourModule } from './column-four/column-four.module';
 import { BoardRoutingModule } from './board-routing.module';
 import { HeaderModule } from '../header/header.module';
+import { ManagersService } from './shared/managers.service';
 
 @NgModule({
   imports: [
@@ -26,6 +27,9 @@ import { HeaderModule } from '../header/header.module';
   ],
   declarations: [
     BoardComponent
+  ],
+  providers: [
+    ManagersService
   ]
 })
 export class BoardModule { }

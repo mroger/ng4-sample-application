@@ -5,6 +5,7 @@ import { MaterialModule } from '@angular/material';
 
 import { ListThreeComponent } from './list-three/list-three.component';
 import { DialogThirdColumnComponent } from './dialog-third-column/dialog-third-column.component';
+import { ListThreeService } from './shared/list-three.service';
 
 @NgModule({
   imports: [
@@ -18,6 +19,9 @@ import { DialogThirdColumnComponent } from './dialog-third-column/dialog-third-c
   declarations: [
     ListThreeComponent,
     DialogThirdColumnComponent
+  ],
+  providers: [
+    ListThreeService
   ],
   entryComponents: [
     DialogThirdColumnComponent

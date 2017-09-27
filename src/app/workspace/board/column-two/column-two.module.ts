@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 import { ListTwoComponent } from './list-two/list-two.component';
 import { DialogSecondColumnComponent } from './dialog-second-column/dialog-second-column.component';
+import { ListTwoService } from './shared/list-two.service';
 
 @NgModule({
   imports: [
@@ -18,6 +19,9 @@ import { DialogSecondColumnComponent } from './dialog-second-column/dialog-secon
   declarations: [
     ListTwoComponent,
     DialogSecondColumnComponent
+  ],
+  providers: [
+    ListTwoService
   ],
   entryComponents: [
     DialogSecondColumnComponent

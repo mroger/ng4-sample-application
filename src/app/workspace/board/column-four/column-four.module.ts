@@ -5,6 +5,7 @@ import { MaterialModule } from '@angular/material';
 
 import { ListFourComponent } from './list-four/list-four.component';
 import { DialogFourthColumnComponent } from './dialog-fourth-column/dialog-fourth-column.component';
+import { ListFourService } from './shared/list-four.service';
 
 @NgModule({
   imports: [
@@ -18,6 +19,9 @@ import { DialogFourthColumnComponent } from './dialog-fourth-column/dialog-fourt
   declarations: [
     ListFourComponent,
     DialogFourthColumnComponent
+  ],
+  providers: [
+    ListFourService
   ],
   entryComponents: [
     DialogFourthColumnComponent

@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 import { DialogFirstColumnComponent } from './dialog-first-column/dialog-first-column.component';
 import { ListOneComponent } from './list-one/list-one.component';
+import { ListOneService } from './shared/list-one.service';
 
 @NgModule({
   imports: [
@@ -18,6 +19,9 @@ import { ListOneComponent } from './list-one/list-one.component';
   declarations: [
     DialogFirstColumnComponent,
     ListOneComponent
+  ],
+  providers: [
+    ListOneService
   ],
   entryComponents: [
     DialogFirstColumnComponent
