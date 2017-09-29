@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 import { Router, ActivatedRoute, ParamMap, Params, UrlSegment } from '@angular/router';
+import { Observable} from 'rxjs/Rx';
 
 import { DialogFourthColumnComponent } from '../dialog-fourth-column/dialog-fourth-column.component';
 import { Four } from './../shared/four.model';
@@ -31,10 +32,10 @@ export class ListFourComponent implements OnInit {
         this.cardItems = [];
         this.selectedCardThreeId = +params['columnThreeSelectedCardId'];
         this.showList = !isNaN(this.selectedCardThreeId);
-        return this.showList ? this.listFourService.getCardItems(this.selectedCardThreeId) : [];
+        return this.showList ? this.listFourService.getCardItems(this.selectedCardThreeId) : Observable.of([]);
       })
-      .subscribe((cardItem: Four) => {
-        this.cardItems.push(cardItem);
+      .subscribe((cardItems: Array<Four>) => {
+        this.cardItems = cardItems;
 
         this.selectedCardOneId =  +this.router.parseUrl(this.router.url)
           .root.children.primary.children['column-two'].segments[0].path;

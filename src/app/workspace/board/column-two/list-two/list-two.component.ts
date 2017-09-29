@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 import { Router, ActivatedRoute, ParamMap, Params, UrlSegment, UrlTree, UrlSegmentGroup } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
+import { Observable} from 'rxjs/Rx';
 
 import { DialogSecondColumnComponent } from '../dialog-second-column/dialog-second-column.component';
 import { Two } from './../shared/two.model';
@@ -30,10 +31,10 @@ export class ListTwoComponent implements OnInit {
         this.cardItems = [];
         this.selectedCardOneId = +params['columnOneSelectedCardId'];
         this.showList = !isNaN(this.selectedCardOneId);
-        return this.showList ? this.listTwoService.getCardItems(this.selectedCardOneId) : [];
+        return this.showList ? this.listTwoService.getCardItems(this.selectedCardOneId) : Observable.from([]);
       })
-      .subscribe((cardItem: Two) => {
-        this.cardItems.push(cardItem);
+      .subscribe((cardItems: Array<Two>) => {
+        this.cardItems = cardItems;
       });
   }
 

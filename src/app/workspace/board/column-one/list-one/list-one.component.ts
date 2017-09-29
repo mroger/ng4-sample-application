@@ -18,10 +18,15 @@ export class ListOneComponent implements OnInit {
   constructor(
     private dialog: MdDialog,
     private router: Router,
-    private listOneService: ListOneService) { }
+    private listOneService: ListOneService) {
+      this.cardItems = [];
+    }
 
   ngOnInit() {
-    this.cardItems = this.listOneService.getCardItems();
+    this.listOneService.getCardItems()
+      .then(cardItems => {
+        this.cardItems = cardItems;
+      });
   }
 
   onSelectCard(cardItem: One): void {

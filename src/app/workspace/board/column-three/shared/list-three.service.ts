@@ -16,13 +16,14 @@ export class ListThreeService {
 
   constructor() { }
 
-  getCardItems(selectedCardTwoId: number): Array<Three> {
+  getCardItems(selectedCardTwoId: number): Promise<Array<Three>> {
     if (this.cardItems.length === 0) {
-      return [];
+      return Promise.resolve([]);
     }
-    return this.cardItems.filter(cardItem => {
+    const cardItemsFiltered = this.cardItems.filter(cardItem => {
       return cardItem.selectedCardTwoId === selectedCardTwoId;
     });
+    return Promise.resolve(cardItemsFiltered );
   }
 
   addCardItem(cardItem: Three): Three {

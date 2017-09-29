@@ -15,13 +15,14 @@ export class ListTwoService {
 
   constructor() { }
 
-  getCardItems(selectedCardOneId: number): Array<Two> {
+  getCardItems(selectedCardOneId: number): Promise<Array<Two>> {
     if (this.cardItems.length === 0) {
-      return [];
+      return Promise.resolve([]);
     }
-    return this.cardItems.filter(cardItem => {
+    const filteredCardItems = this.cardItems.filter(cardItem => {
       return cardItem.selectedCardOneId === selectedCardOneId;
     });
+    return Promise.resolve(filteredCardItems);
   }
 
   addCardItem(cardItem: Two): Two {

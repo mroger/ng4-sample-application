@@ -20,13 +20,14 @@ export class ListFourService {
 
   constructor() { }
 
-  getCardItems(selectedCardThreeId: number): Array<Four> {
+  getCardItems(selectedCardThreeId: number): Promise<Array<Four>> {
     if (this.cardItems.length === 0) {
-      return [];
+      return Promise.resolve([]);
     }
-    return this.cardItems.filter(cardItem => {
+    const cardItemsFiltered = this.cardItems.filter(cardItem => {
       return cardItem.selectedCardThreeId === selectedCardThreeId;
     });
+    return Promise.resolve(cardItemsFiltered);
   }
 
   addCardItem(cardItem: Four): Four {

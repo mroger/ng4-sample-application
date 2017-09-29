@@ -16,8 +16,8 @@ export class ListOneService {
 
   constructor() { }
 
-  getCardItems(): Array<One> {
-    return this.cardItems;
+  getCardItems(): Promise<Array<One>> {
+    return Promise.resolve(this.cardItems);
   }
 
   addCardItem(cardItem: One): One {

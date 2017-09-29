@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 import { Router, ActivatedRoute, ParamMap, Params, UrlSegment, UrlTree, UrlSegmentGroup } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
+import { Observable } from 'rxjs/Rx';
 
 import { DialogThirdColumnComponent } from '../dialog-third-column/dialog-third-column.component';
 import { Three } from './../shared/three.model';
@@ -31,10 +32,10 @@ export class ListThreeComponent implements OnInit {
         this.cardItems = [];
         this.selectedCardTwoId = +params['columnTwoSelectedCardId'];
         this.showList = !isNaN(this.selectedCardTwoId);
-        return this.showList ? this.listThreeService.getCardItems(this.selectedCardTwoId) : [];
+        return this.showList ? this.listThreeService.getCardItems(this.selectedCardTwoId) : Observable.of([]);
       })
-      .subscribe((cardItem: Three) => {
-        this.cardItems.push(cardItem);
+      .subscribe((cardItems: Array<Three>) => {
+        this.cardItems = cardItems;
 
         this.selectedCardOneId =  +this.router.parseUrl(this.router.url)
           .root.children.primary.children['column-two'].segments[0].path;
